@@ -12,9 +12,9 @@ export default function App() {
 
     <Stack.Navigator> 
       <Stack.Screen name="Simple ToDo Manager" component={Home}/>
+      
       <Stack.Screen name="ToDoList" 
         component={ToDoList}
-        //Display the list's title
         options={({route})=>{
           return({
             title:route.params.title,

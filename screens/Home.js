@@ -1,35 +1,39 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native';
 import { Ionicons } from "@expo/vector-icons" 
-import Colors from "../constants/Colors"
+import Colors from "../constants/Colors";
 
 //Button List
-const ListButton = ({title, color}) => {
+const ListButton = ({title, color, navigation}) => {
     return(
         //Boxes List
-        <TouchableOpacity onPress={() => {}} style={[styles.itemContainer,{backgroundColor:color}]}>
-            <View><Text style = {styles.itemTitle}>{title}</Text></View>
-            <View style = {{flexDirection:"row"}}></View>
+        <TouchableOpacity 
+            onPress={() => {navigation.navigate("ToDoList", {title, color})}} 
+            style={[styles.itemContainer,{backgroundColor:color}]}
+        >
+                <View><Text style = {styles.itemTitle}>{title}</Text></View>
+                <View style = {{flexDirection:"row"}}></View>
 
-                {/*Options*/}
-                <TouchableOpacity onPress={()=>{}}>
-                    <Ionicons name= "options-outline" size={24} color="white"/>
+                    {/*Options*/}
+                    <TouchableOpacity onPress={()=>{}}>
+                        <Ionicons name= "options-outline" size={24} color="white"/>
+                    </TouchableOpacity>
+
+                    {/*Trash*/}
+                    <TouchableOpacity onPress={()=>{}}>
+                        <Ionicons name= "trash-outline" size={24} color="white"/>
                 </TouchableOpacity>
-
-                {/*Trash*/}
-                <TouchableOpacity onPress={()=>{}}>
-                    <Ionicons name= "trash-outline" size={24} color="white"/>
-            </TouchableOpacity>
 </TouchableOpacity>);
 }
-export default () => {
+
+export default ({navigation}) => {
     return(
         <View style={styles.container}>
            <FlatList 
             data={[{title:"School", color:Colors.red},{title:"Work", color:Colors.green},{title:"Fun", color:Colors.yellow}]}
             renderItem = {({item:{title, color},index})=>{
                 return(
-                    <ListButton title={title} color={color}/>
+                    <ListButton title={title} color={color} navigation={navigation}/>
                 );
             
             }}    

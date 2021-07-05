@@ -10,7 +10,7 @@ export default function App() {
   <NavigationContainer>
 
     <Stack.Navigator> 
-      <Stack.Screen name="My-ToDo" component={Home}/>
+      <Stack.Screen name="Simple ToDo Manager" component={Home}/>
 
     </Stack.Navigator>
       
